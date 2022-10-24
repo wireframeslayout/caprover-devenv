@@ -1,0 +1,25 @@
+captainVersion: 4
+services:
+    $$cap_appname:
+        image: junzo/laravel-devenv:php8.0
+        volumes:
+          - $$cap_env_path:/srv/app
+        restart: always
+caproverOneClickApp:
+    variables:
+        - id: $$cap_env_path
+          label: 開発ディレクトリ
+          defaultValue: '/var/www/your-app-name'
+          description: 開発を行うサーバーのディレクトリを指定していください
+    instructions:
+        start: >-
+            Laravelのリモート開発環境用のための One Click App です<br />
+            データベースは含まれていませんので、自身でMySQLのサービスを立ち上げてください<br />
+            DockerHubのリポジトリ: https://hub.docker.com/repository/docker/junzo/laravel-devenv
+            イメージのDockerfileはこちらです。: 
+        end: >-
+            完了しました 😄
+            http://$$cap_appname.$$cap_root_domain
+    displayName: 'Laravel開発環境'
+    isOfficial: false
+    description: 
